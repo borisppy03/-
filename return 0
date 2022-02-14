@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+int main()
+{
+    char* massive1;
+    massive1 = (char*)malloc(32 * sizeof(char));
+    scanf("%s", massive1);
+    int i = 0;
+    double x = 0;
+    double y = 0;
+    double c;
+    int n = strlen(massive1) - 1;
+    while (massive1[i] != '.' && i <= n)
+    {
+        c = massive1[i] - '0';
+        x = x * 2 + c;
+        i++;
+    }
+    if (i > n)
+    {
+        printf("%0.12lg", x);
+        free(massive1);
+        return 0;
+    }
+    while (massive1[n] != '.')
+    {
+        c = massive1[n] - '0';
+        y = (y + c) / 2;
+        n--;
+    }
+    printf("%.12lg", x + y);
+    free(massive1);
+    return 0;
+    }
